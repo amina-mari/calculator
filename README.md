@@ -1,1 +1,1 @@
-# calculator
+This is my final project of The Odin Project's Foundations Course: a calculator to use in the browser. 

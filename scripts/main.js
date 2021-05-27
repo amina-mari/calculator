@@ -10,12 +10,16 @@ let display = document.getElementById("display");
 let displayValue = "";
 
 
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber;
+let secondNumber;
 let result = 0;
 
 function setFirstNumber(){
     firstNumber = Number(displayValue);
+}
+
+function setSecondNumber(){
+    secondNumber = Number(displayValue);
 }
 
 function clearDisplay(){
@@ -27,48 +31,100 @@ function setOperation(operation){
     display.setAttribute("data-operation", operation);
 };
 
+function operate(){
+    if(typeof firstNumber === "number"
+    && typeof secondNumber === "number"
+    && display.getAttribute("data-operation")){
+
+        switch(display.getAttribute("data-operation")){
+            case "add":
+                result = firstNumber + secondNumber;
+                break;
+            case "subtract":
+                result = firstNumber - secondNumber;
+                break;
+            case "divide":
+                if(secondNumber === 0) {
+                    alert("Don't crash my calculator!!!")
+                    return;
+                }
+                result = firstNumber / secondNumber;
+                break;
+            case "multiply":
+                result = firstNumber * secondNumber;
+                break;    
+        }
+        if(result )
+        return result;
+    } else alert("You won't crash it ;)");
+}
+
 buttonAdd.addEventListener("click", function(){
-    if(!firstNumber) setFirstNumber();
-    clearDisplay();
+    if(typeof firstNumber === "number") setSecondNumber();    
+    
+    if(typeof firstNumber === "number" 
+    && typeof secondNumber === "number"
+    && display.getAttribute("data-operation")) firstNumber = operate();
+    
     setOperation("add");
+    
+    if(typeof firstNumber !== "number") setFirstNumber();
+    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}`);
+    clearDisplay();
 });
 
 buttonSubtract.addEventListener("click", function(){
-    if(!firstNumber) setFirstNumber();
-    clearDisplay();
+    if(typeof firstNumber === "number") setSecondNumber();    
+    
+    if(typeof firstNumber === "number" 
+    && typeof secondNumber === "number"
+    && display.getAttribute("data-operation")) firstNumber = operate();
+
     setOperation("subtract");
+
+    if(typeof firstNumber !== "number") setFirstNumber();
+
+    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
+    clearDisplay();
 });
 
 buttonDivide.addEventListener("click", function(){
-    if(!firstNumber) setFirstNumber();
-    clearDisplay();
+    if(typeof firstNumber === "number") setSecondNumber();  
+         
+    
+    if(typeof firstNumber === "number" 
+    && typeof secondNumber === "number"
+    && display.getAttribute("data-operation")) firstNumber = operate();
+
     setOperation("divide");
+
+    if(typeof firstNumber !== "number") setFirstNumber();
+
+    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
+    clearDisplay();
 });
 
 buttonMultiply.addEventListener("click", function(){
-    if(!firstNumber) setFirstNumber();
-    clearDisplay();
+    if(typeof firstNumber === "number") setSecondNumber();    
+    
+    if(typeof firstNumber === "number" 
+    && typeof secondNumber === "number"
+    && display.getAttribute("data-operation")) firstNumber = operate();
+
     setOperation("multiply");
+
+    if(typeof firstNumber !== "number") setFirstNumber();
+
+    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
+    clearDisplay();
 });
 
 buttonEqual.addEventListener('click', function(){
     secondNumber = Number(displayValue);
-    switch(display.getAttribute("data-operation")){
-        case "add":
-            result = firstNumber + secondNumber;
-            break;
-        case "subtract":
-            result = firstNumber - secondNumber;
-            break;
-        case "divide":
-            result = firstNumber / secondNumber;
-            break;
-        case "multiply":
-            result = firstNumber * secondNumber;
-            break;    
-    }
+    operate();
     display.textContent = result;
     firstNumber = result;
+    display.setAttribute("data-operation", "");
 })
 
 buttonNumbers.forEach(button => {
@@ -79,9 +135,10 @@ buttonNumbers.forEach(button => {
 })
 
 buttonClear.addEventListener("click", () => {
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = null;
+    secondNumber = null;
     result = 0;
     display.textContent = "";
+    display.setAttribute("data-operation", "");
     displayValue = "";
 })
