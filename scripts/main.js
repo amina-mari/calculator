@@ -5,6 +5,8 @@ let buttonMultiply = document.getElementById("buttonMultiply");
 let buttonEqual = document.getElementById("buttonEqual")
 let buttonNumbers = document.querySelectorAll(".button-number");
 let buttonClear = document.getElementById("buttonClear");
+let buttonDot = document.getElementById('buttonDot');
+let buttonBackspace = document.getElementById("buttonBackspace");
 
 let display = document.getElementById("display");
 let displayValue = "";
@@ -54,8 +56,10 @@ function operate(){
                 result = firstNumber * secondNumber;
                 break;    
         }
-        if(result )
-        return result;
+        if(result !== Math.round(result)){
+            result = Number(result.toFixed(2)); 
+            return result;
+        }
     } else alert("You won't crash it ;)");
 }
 
@@ -91,7 +95,6 @@ buttonSubtract.addEventListener("click", function(){
 buttonDivide.addEventListener("click", function(){
     if(typeof firstNumber === "number") setSecondNumber();  
          
-    
     if(typeof firstNumber === "number" 
     && typeof secondNumber === "number"
     && display.getAttribute("data-operation")) firstNumber = operate();
@@ -122,6 +125,7 @@ buttonMultiply.addEventListener("click", function(){
 buttonEqual.addEventListener('click', function(){
     secondNumber = Number(displayValue);
     operate();
+    displayValue = result;
     display.textContent = result;
     firstNumber = result;
     display.setAttribute("data-operation", "");
@@ -141,4 +145,25 @@ buttonClear.addEventListener("click", () => {
     display.textContent = "";
     display.setAttribute("data-operation", "");
     displayValue = "";
+})
+
+buttonDot.addEventListener('click', function(){
+    if(!displayValue) return;
+    let displayTest = displayValue.split("");
+    for(let i = 0; i <displayTest.length; i++){
+        if(displayTest[i] === ".") return;
+    }
+
+    displayValue += buttonDot.textContent;
+    display.textContent = displayValue;  
+})
+
+buttonBackspace.addEventListener('click', ()=>{
+    if(!displayValue) return;
+
+    let arrayDisplay = displayValue.split("");
+    arrayDisplay.pop();
+    displayValue = arrayDisplay.join("");
+
+    display.textContent = displayValue;
 })
