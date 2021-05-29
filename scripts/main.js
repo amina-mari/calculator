@@ -73,7 +73,7 @@ buttonAdd.addEventListener("click", function(){
     setOperation("add");
     
     if(typeof firstNumber !== "number") setFirstNumber();
-    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}`);
+    // console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}`);
     clearDisplay();
 });
 
@@ -88,7 +88,6 @@ buttonSubtract.addEventListener("click", function(){
 
     if(typeof firstNumber !== "number") setFirstNumber();
 
-    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
     clearDisplay();
 });
 
@@ -103,7 +102,6 @@ buttonDivide.addEventListener("click", function(){
 
     if(typeof firstNumber !== "number") setFirstNumber();
 
-    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
     clearDisplay();
 });
 
@@ -118,7 +116,6 @@ buttonMultiply.addEventListener("click", function(){
 
     if(typeof firstNumber !== "number") setFirstNumber();
 
-    console.log(`First: ${firstNumber}\nSecond: ${secondNumber}\nDisplayValue: ${displayValue}\n${display.getAttribute('data-operation')}`);
     clearDisplay();
 });
 

@@ -1,4 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+header {
+    background-color: #a8dadc;
+    color: #1d3557;
+    height: 10%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.calculator {
+    width: 50%;
+    margin: auto;
+    height: 65%;
+    font-size: 2rem;
+}
+
+.calculator div {
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+    margin-bottom: 1%;
+}
+
 #display {
-    height: 20px;
     border: 1px solid black;
+    text-align: right;
+    flex-basis: 100%;
+    border-radius: 5px;
+    background-color: #1d3557;
+    color: white;
+}
+
+button {
+    width: 24%;
+    border-radius: 5px;
+    outline: none;
+    position: relative;
+    font-size: 1.8rem;
+    border: none;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    top: 2px;
+}
+
+.button-number {
+    background: #14679b;
+}
+
+.button-number:hover {
+    background: #005b94;
+}
+
+.button-operation {
+    background-color: #457b9d;
+}
+
+.button-operation:hover {
+    background-color: #14679b;
+}
+
+#buttonDot {
+    background-color: #457b9d;
+}
+
+#buttonDot:hover {
+    background-color: #14679b;
+}
+
+#buttonClear {
+    width: 49.5%;
+    background-color: #e05d68;
+}
+
+#buttonClear:hover {
+    background-color: #e63946;
+}
+
+#buttonBackspace {
+    background-color: #e05d68;
+}
+
+#buttonBackspace:hover {
+    background-color: #e63946;
+}
+
+#buttonEqual {
+    width: 49.5%;
+    background-color: #1d3557;
+}
+
+#buttonEqual:hover {
+    background-color: #05224b;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    background-color: #1d3557;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    display: inline-block;
+    font-size: 1.3rem;
+}
+
+footer img {
+    width: 20px;
+    vertical-align: bottom;
+}
+
+@media (max-width: 600px){
+    .calculator {
+        width: 70%;
+    }
+}
+
+@media(max-width: 400px){
+    .calculator {
+        width: 90%;
+    }
 }
